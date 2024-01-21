@@ -1,0 +1,19 @@
+<configuration>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/stdout.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/archives/stdout.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%X{traceId}|%thread{24}|%-5level|%logger{32}|%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="io.bhex.base" level="DEBUG"/>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: common-server
+  datasource:
+    type: io.bhex.base.mysql.BHMysqlDataSource
+    url: jdbc:mysql://common-server-db:3306/common_server?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&allowPublicKeyRetrieval=true&useSSL=false
+    username: broker-server-write
+    password: xxxxxx
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      maximum-pool-size: 100
+      minimum-idle: 10
+  redis:
+    cluster:
+      nodes:
+        - common-server-redis:6379
+
+grpc:
+  port: 7220
+server:
+  port: 7320
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+verify-captcha: true  #当不校验时，验证码实际不发送且无发送纪录，且默认123456有效
+global-notify-type: 3  #全局强制通知类型 1：all, 2：仅手机, 3：仅邮箱
+
